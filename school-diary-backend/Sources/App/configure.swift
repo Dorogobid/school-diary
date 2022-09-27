@@ -17,7 +17,7 @@ public func configure(_ app: Application) throws {
     app.migrations.add(Mark.Migration())
 
     app.views.use(.leaf)
-    app.passwords.use(.bcrypt)
+//    app.passwords.use(.bcrypt)
 
     app.logger.logLevel = .debug
 
