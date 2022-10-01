@@ -3,8 +3,12 @@ import FluentSQL
 import Vapor
 
 func routes(_ app: Application) throws {
-
     //MARK: http
+    //GET /
+    app.get("") { req async throws in
+        try await req.view.render("index")
+    }
+
     // POST /login
     app.post("login") { req async throws -> View in
         let login = try req.content.decode(LoginData.self)
@@ -102,8 +106,7 @@ func routes(_ app: Application) throws {
             return HTTPStatus.forbidden
         }
     }
-    
-    
+     
     //MARK: Samples
     // GET /api/samples
     api.get("samples") { req async -> [String] in
@@ -115,10 +118,7 @@ func routes(_ app: Application) throws {
             return ["\(error)"]
         }
     }
-    
-    
-    
-    
+
     //MARK: Subjects
     // GET /api/subjects
     api.get("subjects") { req async throws in
@@ -129,9 +129,6 @@ func routes(_ app: Application) throws {
             return []
         }
     }
-    
-    
-    
     
     //MARK: Teachers
     // GET /api/teachers/:teacherLogin
@@ -146,9 +143,6 @@ func routes(_ app: Application) throws {
         }
     }
     
-    
-    
-    
     //MARK: SchoolClasses
     // GET /api/schoolclasses/:ID
     api.get("school_classes", ":ID") { req async throws in
@@ -161,9 +155,6 @@ func routes(_ app: Application) throws {
             return []
         }
     }
-    
-    
-    
     
     //MARK: Marks
     // GET /api/marks/1/:studentID
@@ -187,7 +178,7 @@ func routes(_ app: Application) throws {
         }
     }
     
-    // GET /api/marks/1/:teacherID
+    // GET /api/marks/2/:teacherID
     api.get("marks", "2", ":teacherID") { req async -> [MarkFull] in
         do {
             let _ = try req.auth.require(ApiUser.self)
@@ -231,9 +222,6 @@ func routes(_ app: Application) throws {
             return Mark()
         }
     }
-    
-    
-    
     
     //MARK: Students
     // GET /api/students

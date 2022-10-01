@@ -9,5 +9,6 @@ target 'school-diary' do
 pod 'lottie-ios'
 pod 'Alamofire'
 pod 'SnapKit', '~> 5.6.0'
+pod 'Bond'
 
 end

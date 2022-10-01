@@ -22,7 +22,7 @@ class TeacherViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        NetwordManager.shared.getData(with: teacher!.id, routeString: .marksForTeachers, dataType: Mark.self) { marks in
+        NetwordManager.shared.getData(with: "/\(teacher!.id)", routeString: .marksForTeachers, dataType: Mark.self) { marks in
             self.marks = marks
             self.tableView.reloadData()
         }

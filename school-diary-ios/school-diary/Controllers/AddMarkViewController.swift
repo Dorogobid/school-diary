@@ -10,7 +10,8 @@ class AddMarkViewController: UIViewController {
     var teacher: Teacher?
     var subjects: Subjects = []
     var students: Students = []
-    var marks = [1,2,3,4,5,6,7,8,9,10,11,12]
+    
+    var viewModel: AddMarkViewModel = AddMarkViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +23,9 @@ class AddMarkViewController: UIViewController {
         view.backgroundColor = .white
         
         let topView = UIView()
-//                topView.backgroundColor = .lightGray
         view.addSubview(topView)
         topView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)//.inset(16)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.left.equalToSuperview().inset(8)
             make.right.equalToSuperview().inset(8)
             make.height.equalTo(800)
@@ -62,7 +62,6 @@ class AddMarkViewController: UIViewController {
         topView.addSubview(subjectPicker)
         
         NetwordManager.shared.getData(with: "", routeString: .subjects, dataType: Subject.self) { subjects in
-//        NetwordManager.shared.getAllSubjects { subjects in
             self.subjects = subjects
             self.subjectPicker.reloadAllComponents()
         }
@@ -122,10 +121,8 @@ class AddMarkViewController: UIViewController {
         let cancelButton = UIButton(type: .system)
         cancelButton.setTitleColor(UIColor.white, for: .normal)
         cancelButton.layer.cornerRadius = 15
-//        cancelButton.borde
         cancelButton.backgroundColor = .lightGray
         cancelButton.setTitle("Відмінити", for: .normal)
-//        cancelButton.setTitleColor(.black, for: .normal)
         view.addSubview(cancelButton)
         cancelButton.snp.makeConstraints { make in
             make.left.equalToSuperview().inset(50)
@@ -140,7 +137,6 @@ class AddMarkViewController: UIViewController {
         addButton.layer.cornerRadius = 15
         addButton.backgroundColor = .systemBlue
         addButton.setTitle("Додати", for: .normal)
-//        addButton.setTitleColor(.black, for: .normal)
         view.addSubview(addButton)
         addButton.snp.makeConstraints { make in
             make.right.equalToSuperview().inset(50)
@@ -156,7 +152,11 @@ class AddMarkViewController: UIViewController {
     }
     
     @objc func addButtonPressed() {
-        let mark = MarkRequest(mark: marks[markPicker.selectedRow(inComponent: 0)], student: StudentId(id: students[studentPicker.selectedRow(inComponent: 0)].id), subject: SubjectId(id: subjects[subjectPicker.selectedRow(inComponent: 0)].id), markDate: dateToString(date: datePicker.date), teacher: TeacherId(id: teacher!.id))
+        let mark = MarkRequest(mark: viewModel.marks[markPicker.selectedRow(inComponent: 0)],
+                               student: StudentId(id: students[studentPicker.selectedRow(inComponent: 0)].id),
+                               subject: SubjectId(id: subjects[subjectPicker.selectedRow(inComponent: 0)].id),
+                               markDate: dateToString(date: datePicker.date),
+                               teacher: TeacherId(id: teacher!.id))
         
         NetwordManager.shared.addMark(mark: mark, routeString: .marks)
         dismiss(animated: true)
@@ -175,7 +175,7 @@ extension AddMarkViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         case 1:
             return students.count
         case 2:
-            return marks.count
+            return viewModel.marks.count
         default:
             return 0
         }
@@ -188,7 +188,7 @@ extension AddMarkViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         case 1:
             return students[row].name
         case 2:
-            return "Оцінка - \(marks[row])"
+            return "Оцінка - \(viewModel.marks[row])"
         default:
             return ""
         }

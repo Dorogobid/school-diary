@@ -1,7 +1,8 @@
 import Foundation
 
 struct Teacher: Codable {
-    let password, id, login: String
+    let id: String
+    let password, login: String
     let dateOfBirth: String
     let name, photo: String
 }
