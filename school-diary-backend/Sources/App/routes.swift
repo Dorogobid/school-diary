@@ -240,7 +240,6 @@ func routes(_ app: Application) throws {
         do {
             let _ = try req.auth.require(ApiUser.self)
             return try await Student.query(on: req.db)
-//                .join(SchoolClass.self, on: \Student.schoolClassId == \SchoolClass.$id)
                 .filter(\.$login == req.parameters.get("studentLogin")!)
                 .all()
         } catch {

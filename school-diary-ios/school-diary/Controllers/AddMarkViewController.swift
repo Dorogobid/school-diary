@@ -153,10 +153,10 @@ class AddMarkViewController: UIViewController {
     
     @objc func addButtonPressed() {
         let mark = MarkRequest(mark: viewModel.marks[markPicker.selectedRow(inComponent: 0)],
-                               student: StudentId(id: students[studentPicker.selectedRow(inComponent: 0)].id),
-                               subject: SubjectId(id: subjects[subjectPicker.selectedRow(inComponent: 0)].id),
+                               studentId: students[studentPicker.selectedRow(inComponent: 0)].id,
+                               subjectId: subjects[subjectPicker.selectedRow(inComponent: 0)].id,
                                markDate: dateToString(date: datePicker.date),
-                               teacher: TeacherId(id: teacher!.id))
+                               teacherId: teacher!.id)
         
         NetwordManager.shared.addMark(mark: mark, routeString: .marks)
         dismiss(animated: true)

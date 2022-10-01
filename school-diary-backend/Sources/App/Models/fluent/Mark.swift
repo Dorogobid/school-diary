@@ -11,26 +11,26 @@ final class Mark: Content, Model {
     @Field(key: "mark_date")
     var markDate: String
     
-    @Parent(key: "subject_id")
-    var subject: Subject
+    @Field(key: "subject_id")
+    var subjectId: UUID
     
-    @Parent(key: "student_id")
-    var student: Student
+    @Field(key: "student_id")
+    var studentId: UUID
 
-    @Parent(key: "teacher_id")
-    var teacher: Teacher
+    @Field(key: "teacher_id")
+    var teacherId: UUID
     
     @Field(key: "mark")
     var mark: Int
     
     init() { }
 
-    init(id: UUID? = nil, markDate: String, subjectID: Subject.IDValue, studentID: Student.IDValue, teacherID: Teacher.IDValue, mark: Int) {
+    init(id: UUID? = nil, markDate: String, subjectID: UUID, studentID: UUID, teacherID: UUID, mark: Int) {
         self.id = id
         self.markDate = markDate
-        self.$subject.id = subjectID
-        self.$student.id = studentID
-        self.$teacher.id = teacherID
+        self.subjectId = subjectID
+        self.studentId = studentID
+        self.teacherId = teacherID
         self.mark = mark
     }
 }
@@ -44,14 +44,14 @@ final class MarkFull: Content, Model {
     @Field(key: "mark_date")
     var markDate: String
     
-    @Parent(key: "subject_id")
-    var subject: Subject
+    @Field(key: "subject_id")
+    var subjectId: UUID
     
-    @Parent(key: "student_id")
-    var student: Student
+    @Field(key: "student_id")
+    var studentId: UUID
 
-    @Parent(key: "teacher_id")
-    var teacher: Teacher
+    @Field(key: "teacher_id")
+    var teacherId: UUID
     
     @Field(key: "mark")
     var mark: Int
