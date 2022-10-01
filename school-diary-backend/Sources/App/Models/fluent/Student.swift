@@ -23,18 +23,18 @@ final class Student: Content, Model {
     @Field(key: "date_of_birth")
     var dateOfBirth: String
     
-    @Parent(key: "school_class_id")
-    var schoolClass: SchoolClass
+    @Field(key: "school_class_id")
+    var schoolClassId: UUID
     
     init() { }
     
-    init(id: UUID? = nil, name: String, photo: String? = nil, login: String, password: String, dateOfBirth: String, schoolClassID: SchoolClass.IDValue) {
+    init(id: UUID? = nil, name: String, photo: String? = nil, login: String, password: String, dateOfBirth: String, schoolClassID: UUID) {
         self.id = id
         self.name = name
         self.photo = photo
         self.login = login
         self.password = password
         self.dateOfBirth = dateOfBirth
-        self.$schoolClass.id = schoolClassID
+        self.schoolClassId = schoolClassID
     }
 }

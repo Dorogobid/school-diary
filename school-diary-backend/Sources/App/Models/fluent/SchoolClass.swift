@@ -11,9 +11,6 @@ final class SchoolClass: Content, Model {
     @Field(key: "class_name")
     var className: String
     
-    @Children(for: \.$schoolClass)
-    var students: [Student]
-    
     init() { }
     
     init(id: UUID? = nil, className: String) {

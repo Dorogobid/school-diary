@@ -61,7 +61,7 @@ class UserDetailsView: UIView {
             nameLabel.text = student?.name
             birthLabel.text = "Дата народження: \(student!.dateOfBirth)"
             
-            NetwordManager.shared.getData(with: "/\(student!.schoolClass.id)", routeString: .schoolClasses, dataType: SchoolClass.self) { schoolClasses in
+            NetwordManager.shared.getData(with: "/\(student!.schoolClassId)", routeString: .schoolClasses, dataType: SchoolClass.self) { schoolClasses in
                 classLabel.text = "Учень відвідує \(schoolClasses.first!.className) клас"
             }
             
