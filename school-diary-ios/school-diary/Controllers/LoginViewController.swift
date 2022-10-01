@@ -108,14 +108,14 @@ class LoginViewController: UIViewController {
         }
         NetwordManager.shared.login(userType: userType.rawValue, userName: loginText.text!, password: passwordText.text!, completed: { allowLogin in
             if allowLogin && userType == .teacher {
-                NetwordManager.shared.getData(with: self.loginText.text!, routeString: .teachers, dataType: Teacher.self) { teachers in
+                NetwordManager.shared.getData(with: "/" + self.loginText.text!, routeString: .teachers, dataType: Teacher.self) { teachers in
                     let teacherViewController = TeacherViewController()
                     teacherViewController.modalPresentationStyle = .fullScreen
                     teacherViewController.teacher = teachers.first
                     self.show(teacherViewController, sender: nil)
                 }
             } else if allowLogin && userType == .student {
-                NetwordManager.shared.getData(with: self.loginText.text!, routeString: .students, dataType: Student.self) { students in
+                NetwordManager.shared.getData(with: "/" + self.loginText.text!, routeString: .students, dataType: Student.self) { students in
                     let studentViewController = StudentViewController()
                     studentViewController.modalPresentationStyle = .fullScreen
                     studentViewController.student = students.first
@@ -126,45 +126,6 @@ class LoginViewController: UIViewController {
                 return
             }
         })
-        
-//        if loginText.text == nil || loginText.text == "" || passwordText.text == nil || passwordText.text == "" {
-//            errorAlert(viewController: self, title: "Помилка",  message: "Введіть дані для входу!")
-//            return
-//        }
-//        if teacherOrStudent.selectedSegmentIndex == 0 {
-//            //Вчителі
-//            NetwordManager.shared.getData(with: loginText.text!, routeString: .teachers, dataType: Teacher.self) { teachers in
-//                if teachers.count == 0 {
-//                    errorAlert(viewController: self, title: "Помилка",  message: "Такого користувача не знайдено")
-//                    return
-//                }
-//                if !checkPassword(password: self.passwordText.text!, hash: teachers.first!.password) {
-//                    errorAlert(viewController: self, title: "Помилка",  message: "Неправильний пароль")
-//                    return
-//                }
-//                let teacherViewController = TeacherViewController()
-//                teacherViewController.modalPresentationStyle = .fullScreen
-//                teacherViewController.teacher = teachers.first
-//                self.show(teacherViewController, sender: nil)
-//            }
-//        } else {
-//            //Учні
-//            NetwordManager.shared.getData(with: loginText.text!, routeString: .students, dataType: Student.self) { students in
-//                if students.count == 0 {
-//                    errorAlert(viewController: self, title: "Помилка",  message: "Такого користувача не знайдено")
-//                    return
-//                }
-//                if !checkPassword(password: self.passwordText.text!, hash: students.first!.password) {
-//                    errorAlert(viewController: self, title: "Помилка",  message: "Неправильний пароль")
-//                    return
-//                }
-//
-//                let studentViewController = StudentViewController()
-//                studentViewController.modalPresentationStyle = .fullScreen
-//                studentViewController.student = students.first
-//                self.show(studentViewController, sender: nil)
-//            }
-//        }
     }
 }
 

@@ -2,15 +2,15 @@ import Foundation
 import Alamofire
 
 enum RouteString: String {
-    case subjects = "/api/subjects/"
-    case students = "/api/students/"
-    case teachers = "/api/teachers/"
+    case subjects = "/api/subjects"
+    case students = "/api/students"
+    case teachers = "/api/teachers"
     case marks = "/api/marks"
-    case marksForStudents = "/api/marks/1/"
-    case marksForTeachers = "/api/marks/2/"
-    case images = "/img/"
-    case schoolClasses = "/api/school_classes/"
-    case login = "/api/login/"
+    case marksForStudents = "/api/marks/1"
+    case marksForTeachers = "/api/marks/2"
+    case images = "/img"
+    case schoolClasses = "/api/school_classes"
+    case login = "/api/login"
 }
 
 

@@ -27,6 +27,7 @@
 		157DD4A128CE4E7500B2D814 /* AddMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157DD4A028CE4E7500B2D814 /* AddMarkViewController.swift */; };
 		157DD4A328CF070400B2D814 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157DD4A228CF070400B2D814 /* Subject.swift */; };
 		15B71DA328D0F32000AFA8B5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B71DA228D0F32000AFA8B5 /* NetworkManager.swift */; };
+		15D3DEC228E3034D004594AB /* AddMarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D3DEC128E3034D004594AB /* AddMarkViewModel.swift */; };
 		15E4291128CA0697006753DA /* happy-birthday.json in Resources */ = {isa = PBXBuildFile; fileRef = 15E4291028CA0697006753DA /* happy-birthday.json */; };
 		15F27F00C1B8B25538BA33D9 /* Pods_school_diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469D073677967B8468BF0771 /* Pods_school_diary.framework */; };
 /* End PBXBuildFile section */
@@ -54,6 +55,7 @@
 		157DD4A028CE4E7500B2D814 /* AddMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMarkViewController.swift; sourceTree = "<group>"; };
 		157DD4A228CF070400B2D814 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
 		15B71DA228D0F32000AFA8B5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		15D3DEC128E3034D004594AB /* AddMarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMarkViewModel.swift; sourceTree = "<group>"; };
 		15E4291028CA0697006753DA /* happy-birthday.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "happy-birthday.json"; sourceTree = "<group>"; };
 		469D073677967B8468BF0771 /* Pods_school_diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_school_diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED36B9A8F1229BA014B1AE41 /* Pods-school-diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-school-diary.debug.xcconfig"; path = "Target Support Files/Pods-school-diary/Pods-school-diary.debug.xcconfig"; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 		157CB1E028C889260051C4DF /* school-diary */ = {
 			isa = PBXGroup;
 			children = (
+				15D3DEC028E30337004594AB /* ViewModels */,
 				15E4291228CA069D006753DA /* animations */,
 				157CB1FE28C91F560051C4DF /* Podfile */,
 				157CB20028C926D80051C4DF /* custom */,
@@ -149,6 +152,14 @@
 				15B71DA228D0F32000AFA8B5 /* NetworkManager.swift */,
 			);
 			path = custom;
+			sourceTree = "<group>";
+		};
+		15D3DEC028E30337004594AB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				15D3DEC128E3034D004594AB /* AddMarkViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		15E4291228CA069D006753DA /* animations */ = {
@@ -301,6 +312,7 @@
 				157CB1E628C889260051C4DF /* LoginViewController.swift in Sources */,
 				157CB1E228C889260051C4DF /* AppDelegate.swift in Sources */,
 				15B71DA328D0F32000AFA8B5 /* NetworkManager.swift in Sources */,
+				15D3DEC228E3034D004594AB /* AddMarkViewModel.swift in Sources */,
 				157DD49D28CE12ED00B2D814 /* UserDetailsView.swift in Sources */,
 				157CB20628C9B9990051C4DF /* functions.swift in Sources */,
 				157CB20428C92DCA0051C4DF /* extensions.swift in Sources */,

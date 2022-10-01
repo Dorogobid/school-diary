@@ -178,7 +178,7 @@ func routes(_ app: Application) throws {
         }
     }
     
-    // GET /api/marks/1/:teacherID
+    // GET /api/marks/2/:teacherID
     api.get("marks", "2", ":teacherID") { req async -> [MarkFull] in
         do {
             let _ = try req.auth.require(ApiUser.self)

@@ -33,8 +33,8 @@ class SampleValues {
     }
     
     func getTeachers() throws -> [Teacher] {
-        let teacher1 = Teacher(name: "Юдковська Вікторія Василівна", photo: "teacher1.jpeg", login: "teacher1", password: hashStr("teacher1"), dateOfBirth: "1988-09-10")
-        let teacher2 = Teacher(name: "Крутінь Ніна Григорівна", photo: "teacher2.jpeg", login: "teacher2", password: hashStr("teacher2"), dateOfBirth: "1976-10-14")
+        let teacher1 = Teacher(name: "Девід Гарбор", photo: "teacher1.jpeg", login: "teacher1", password: hashStr("teacher1"), dateOfBirth: "1988-09-10")
+        let teacher2 = Teacher(name: "Вайнона Райдер", photo: "teacher2.jpeg", login: "teacher2", password: hashStr("teacher2"), dateOfBirth: "1976-10-14")
         
         return [teacher1, teacher2]
     }
@@ -50,7 +50,7 @@ class SampleValues {
     
     func getStudents2(schoolClassId: UUID) throws -> [Student] {
         let student5 = Student(name: "Седі Сінк", photo: "student5.jpeg", login: "student5", password: hashStr("student5"), dateOfBirth: "2002-04-16", schoolClassID: schoolClassId)
-        let student6 = Student(name: "Гейтен Матараццо", photo: "student6.jpeg", login: "student6", password: hashStr("student6"), dateOfBirth: "2002-09-08", schoolClassID: schoolClassId)
+        let student6 = Student(name: "Вайнона Райдер", photo: "student6.jpeg", login: "student6", password: hashStr("student6"), dateOfBirth: "2002-09-08", schoolClassID: schoolClassId)
 
         return [student5, student6]
     }
