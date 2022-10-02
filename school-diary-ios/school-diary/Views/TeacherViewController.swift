@@ -1,40 +1,38 @@
 import UIKit
-import Alamofire
 import Lottie
 
 class TeacherViewController: UIViewController {
+    private let rowHeight = 85.0
     let tableView = UITableView()
-//    {
-//        let table = UITableView()
-//        table.register(MarkTableViewCell.self, forCellReuseIdentifier: "cell")
-//        return table
-//    }()
     
-    var teacher: Teacher?
+    var viewModel: UserViewViewModelProtocol!
     var marks: Marks = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        initialize()
+        
+        setObservers()
+        prepareUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        NetworkManager.shared.getData(with: "/\(teacher!.id)", routeString: .marksForTeachers, dataType: Mark.self) { marks in
-            self.marks = marks
+        viewModel.getMarks()
+    }
+    
+    func setObservers() {
+        _ = viewModel.marks.observeNext { [weak self] marksList in
+            guard let self else { return }
+            self.marks = marksList.collection
             self.tableView.reloadData()
         }
     }
     
-    func initialize() {
+    func prepareUI() {
         view.backgroundColor = .white
         let topView = UserDetailsView()
-        topView.userType = .teacher
-        topView.teacher = teacher!
-        
-        topView.prepare()
+        topView.viewModel = UserDetailsViewViewModel(user: viewModel.getUser(), userType: .teacher)
+        topView.prepareUI()
 
         view.addSubview(topView)
         topView.snp.makeConstraints { make in
@@ -74,7 +72,7 @@ class TeacherViewController: UIViewController {
             make.bottom.equalToSuperview()
         }
 
-        if isBirthday(strDate: teacher!.dateOfBirth) {
+        if viewModel.isBirthdayNow() {
             let animation = AnimationView(name: "happy-birthday")
             animation.frame = view.bounds
             animation.contentMode = .scaleAspectFit
@@ -90,7 +88,8 @@ class TeacherViewController: UIViewController {
     @objc func addButtonPressed() {
         let addMarkViewController = AddMarkViewController()
         addMarkViewController.modalPresentationStyle = .fullScreen
-        addMarkViewController.teacher = teacher
+        addMarkViewController.viewModel = AddMarkViewViewModel(teacher: (viewModel.getUser() as? Teacher)!)
+        addMarkViewController.prepareUI()
         showDetailViewController(addMarkViewController, sender: nil)
     }
     
@@ -104,23 +103,22 @@ extension TeacherViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = MarkTableViewCell()//tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MarkTableViewCell
+        let cell = MarkTableViewCell()
         cell.mark = marks[indexPath.row]
         cell.initialize(userType: .teacher)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        85
+        rowHeight
     }
 }
 
 extension TeacherViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title: "Delete") { _, _, completion in
-            NetworkManager.shared.delMark(mark: self.marks[indexPath.row], routeString: .marks)
-            self.marks.remove(at: indexPath.row)
-            self.tableView.reloadData()
+            let viewModel = self.viewModel as? TeacherViewViewModel
+            viewModel?.deleteMark(vc: self, index: indexPath.row)
             completion(true)
         }
         deleteAction.backgroundColor = .red

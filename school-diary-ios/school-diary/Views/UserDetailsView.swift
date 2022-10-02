@@ -3,13 +3,17 @@ import SnapKit
 import Alamofire
 
 class UserDetailsView: UIView {
+    let nameLabel = UILabel()
+    let birthLabel = UILabel()
     
-    var student: Student?
-    var teacher: Teacher?
-    var userType: UserType = .teacher
+    var viewModel: UserDetailsViewViewModelProtocol! {
+        didSet {
+            nameLabel.text = viewModel.userName
+            birthLabel.text = viewModel.dateOfBirth
+        }
+    }
     
-    
-    func prepare() {
+    func prepareUI() {
         backgroundColor = .white
         
         let name1Label = UILabel()
@@ -19,7 +23,6 @@ class UserDetailsView: UIView {
             make.top.equalTo(self)
         }
         
-        let nameLabel = UILabel()
         nameLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
         addSubview(nameLabel)
         nameLabel.snp.makeConstraints { make in
@@ -27,7 +30,6 @@ class UserDetailsView: UIView {
             make.top.equalTo(name1Label).inset(20)
         }
         
-        let birthLabel = UILabel()
         addSubview(birthLabel)
         birthLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().inset(10)
@@ -56,35 +58,24 @@ class UserDetailsView: UIView {
             make.height.equalTo(270)
         }
         
-        if userType == .student {
+        viewModel.getSchoolClass { text in
+            classLabel.text = text
             name1Label.text = "ПІБ учня:"
-            nameLabel.text = student?.name
-            birthLabel.text = "Дата народження: \(student!.dateOfBirth)"
-            
-            NetworkManager.shared.getData(with: "/\(student!.schoolClassId)", routeString: .schoolClasses, dataType: SchoolClass.self) { schoolClasses in
-                classLabel.text = "Учень відвідує \(schoolClasses.first!.className) клас"
-            }
-            
             photoLabel.snp.makeConstraints { make in
                 make.left.equalToSuperview().inset(10)
                 make.top.equalTo(classLabel).inset(24)
             }
-            NetworkManager.shared.getImage(imageName: "/" + student!.photo, routeString: .images) { image in
-                photo.image = image
-            }
-        } else {
+        }
+        if viewModel.userType == .teacher {
             name1Label.text = "ПІБ вчителя:"
-            nameLabel.text = teacher?.name
-            birthLabel.text = "Дата народження: \(teacher!.dateOfBirth)"
             
             photoLabel.snp.makeConstraints { make in
                 make.left.equalToSuperview().inset(10)
                 make.top.equalTo(birthLabel).inset(24)
             }
-            
-            NetworkManager.shared.getImage(imageName: "/" + teacher!.photo, routeString: .images) { image in
-                photo.image = image
-            }
+        }
+        viewModel.getPhoto { image in
+            photo.image = image
         }
         
         let marksLabel = UILabel()

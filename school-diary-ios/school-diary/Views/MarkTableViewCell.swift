@@ -5,7 +5,6 @@ class MarkTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-//        initialize()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,7 +29,6 @@ class MarkTableViewCell: UITableViewCell {
         markLabel.text = "\(mark!.mark)"
         markLabel.font = UIFont.boldSystemFont(ofSize: 35)
         markLabel.textAlignment = .center
-//        markLabel.backgroundColor = .gray
         contentView.addSubview(markLabel)
         markLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().inset(16)
@@ -45,7 +43,6 @@ class MarkTableViewCell: UITableViewCell {
             nameLabel.text = mark!.studentName
         }
         
-//        nameLabel.backgroundColor = .cyan
         contentView.addSubview(nameLabel)
         nameLabel.snp.makeConstraints { make in
             make.left.equalTo(markLabel).inset(58)
@@ -54,8 +51,6 @@ class MarkTableViewCell: UITableViewCell {
         }
         
         subjectLabel.text = "Предмет: \(mark!.subjectName)"
-//        markLabel.font = UIFont.boldSystemFont(ofSize: 20)
-//        subjectLabel.backgroundColor = .green
         contentView.addSubview(subjectLabel)
         subjectLabel.snp.makeConstraints { make in
             make.left.equalTo(markLabel).inset(58)
@@ -65,7 +60,6 @@ class MarkTableViewCell: UITableViewCell {
         
         dateLabel.text = "Дата оцінки: \(mark!.markDate)"
         dateLabel.font = UIFont.systemFont(ofSize: 14)
-//        dateLabel.backgroundColor = .green
         contentView.addSubview(dateLabel)
         dateLabel.snp.makeConstraints { make in
             make.left.equalTo(markLabel).inset(58)

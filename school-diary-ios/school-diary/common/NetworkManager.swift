@@ -20,7 +20,6 @@ final class NetworkManagerV1 : NetworkManagerProtocol{
         NetworkManagerV1()
     }
     
-    
     private let baseURL = "http://127.0.0.1:8080"
     private let bearerToken = "eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCJ98Ng09a8"
     
@@ -72,24 +71,28 @@ final class NetworkManagerV1 : NetworkManagerProtocol{
         }
     }
     
-    func addMark(mark: MarkRequest, routeString: RouteString) {
+    func addMark(mark: MarkRequest, routeString: RouteString, completed: @escaping (String?) -> ()) {
         let url = baseURL + routeString.rawValue
         let headers: HTTPHeaders = [.authorization(bearerToken: bearerToken)]
         
         AF.request(url, method: .post, parameters: mark, encoder: JSONParameterEncoder.prettyPrinted, headers: headers).response { response in
             if response.response?.statusCode == 200 {
-                //
+                completed(nil)
+            } else {
+                completed("Помилка при додаванні данних")
             }
         }
     }
     
-    func delMark(mark: Mark, routeString: RouteString) {
+    func delMark(mark: Mark, routeString: RouteString, completed: @escaping (String?) -> ()) {
         let url = baseURL + routeString.rawValue
         let headers: HTTPHeaders = [.authorization(bearerToken: bearerToken)]
         
         AF.request(url, method: .delete, parameters: mark, encoder: JSONParameterEncoder.prettyPrinted, headers: headers).response { response in
             if response.response?.statusCode == 200 {
-                //
+                completed(nil)
+            } else {
+                completed("Помилка при видаленні данних")
             }
         }
     }

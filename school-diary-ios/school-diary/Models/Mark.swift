@@ -1,5 +1,4 @@
 
-// MARK: - Mark
 struct Mark: Codable {
     let id: String
     let mark: Int

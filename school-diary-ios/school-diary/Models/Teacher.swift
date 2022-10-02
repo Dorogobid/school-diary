@@ -1,5 +1,5 @@
 
-struct Teacher: Codable {
+struct Teacher: Codable, UserProtocol {
     let id: String
     let password, login: String
     let dateOfBirth: String

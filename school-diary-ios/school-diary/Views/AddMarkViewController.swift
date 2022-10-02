@@ -1,5 +1,4 @@
 import UIKit
-import Alamofire
 
 class AddMarkViewController: UIViewController {
     lazy var datePicker = UIDatePicker()
@@ -7,20 +6,13 @@ class AddMarkViewController: UIViewController {
     lazy var studentPicker = UIPickerView()
     lazy var markPicker = UIPickerView()
     
-    var teacher: Teacher?
-    var subjects: Subjects = []
-    var students: Students = []
-    
-    var viewModel: AddMarkViewModel = AddMarkViewModel()
+    var viewModel: AddMarkViewViewModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        initialize()
     }
     
-    func initialize() {
+    func prepareUI() {
         view.backgroundColor = .white
         
         let topView = UIView()
@@ -62,11 +54,6 @@ class AddMarkViewController: UIViewController {
         subjectPicker.tag = 0
         topView.addSubview(subjectPicker)
         
-        NetworkManager.shared.getData(with: "", routeString: .subjects, dataType: Subject.self) { subjects in
-            self.subjects = subjects
-            self.subjectPicker.reloadAllComponents()
-        }
-        
         subjectPicker.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(8)
             make.top.equalTo(subjectLabel).inset(8)
@@ -85,11 +72,6 @@ class AddMarkViewController: UIViewController {
         studentPicker.delegate = self
         studentPicker.tag = 1
         topView.addSubview(studentPicker)
-        
-        NetworkManager.shared.getData(with: "", routeString: .students, dataType: Student.self) { students in
-            self.students = students
-            self.studentPicker.reloadAllComponents()
-        }
 
         studentPicker.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(8)
@@ -110,7 +92,6 @@ class AddMarkViewController: UIViewController {
         markPicker.tag = 2
         markPicker.selectRow(11, inComponent: 0, animated: false)
         topView.addSubview(markPicker)
-        markPicker.reloadAllComponents()
         
         markPicker.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(8)
@@ -146,6 +127,10 @@ class AddMarkViewController: UIViewController {
             make.width.equalTo(100)
         }
         addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+        
+        markPicker.reloadAllComponents()
+        subjectPicker.reloadAllComponents()
+        studentPicker.reloadAllComponents()
     }
     
     @objc func cancelButtonPressed() {
@@ -154,13 +139,13 @@ class AddMarkViewController: UIViewController {
     
     @objc func addButtonPressed() {
         let mark = MarkRequest(mark: viewModel.marks[markPicker.selectedRow(inComponent: 0)],
-                               studentId: students[studentPicker.selectedRow(inComponent: 0)].id,
-                               subjectId: subjects[subjectPicker.selectedRow(inComponent: 0)].id,
+                               studentId: viewModel.students[studentPicker.selectedRow(inComponent: 0)].id,
+                               subjectId: viewModel.subjects[subjectPicker.selectedRow(inComponent: 0)].id,
                                markDate: dateToString(date: datePicker.date),
-                               teacherId: teacher!.id)
-        
-        NetworkManager.shared.addMark(mark: mark, routeString: .marks)
-        dismiss(animated: true)
+                               teacherId: viewModel.teacherId)
+        viewModel.addMark(vc: self, mark: mark) {
+            self.dismiss(animated: true)
+        }
     }
 }
 
@@ -172,9 +157,9 @@ extension AddMarkViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView.tag {
         case 0:
-            return subjects.count
+            return viewModel.subjects.count
         case 1:
-            return students.count
+            return viewModel.students.count
         case 2:
             return viewModel.marks.count
         default:
@@ -185,11 +170,11 @@ extension AddMarkViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView.tag {
         case 0:
-            return subjects[row].subjectName
+            return viewModel.subjects[row].subjectName
         case 1:
-            return students[row].name
+            return viewModel.students[row].name
         case 2:
-            return "Оцінка - \(viewModel.marks[row])"
+            return viewModel.getMark(row: row)
         default:
             return ""
         }

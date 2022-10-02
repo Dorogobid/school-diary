@@ -50,7 +50,7 @@ class SampleValues {
     
     func getStudents2(schoolClassId: UUID) throws -> [Student] {
         let student5 = Student(name: "Седі Сінк", photo: "student5.jpeg", login: "student5", password: hashStr("student5"), dateOfBirth: "2002-04-16", schoolClassID: schoolClassId)
-        let student6 = Student(name: "Вайнона Райдер", photo: "student6.jpeg", login: "student6", password: hashStr("student6"), dateOfBirth: "2002-09-08", schoolClassID: schoolClassId)
+        let student6 = Student(name: "Гейтен Матараццо", photo: "student6.jpeg", login: "student6", password: hashStr("student6"), dateOfBirth: "2002-09-08", schoolClassID: schoolClassId)
 
         return [student5, student6]
     }

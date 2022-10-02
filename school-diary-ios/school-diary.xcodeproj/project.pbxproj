@@ -8,12 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		1545FF8028E9BDFB0020E492 /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545FF7F28E9BDFB0020E492 /* NetworkManagerProtocol.swift */; };
+		1545FF8228E9C3180020E492 /* LoginViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545FF8128E9C3180020E492 /* LoginViewViewModel.swift */; };
+		1545FF8428E9E03C0020E492 /* LoginViewViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545FF8328E9E03C0020E492 /* LoginViewViewModelProtocol.swift */; };
+		1545FF8628E9E4890020E492 /* TeacherViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545FF8528E9E4890020E492 /* TeacherViewViewModel.swift */; };
+		1545FF8828E9F4210020E492 /* UserDetailsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545FF8728E9F4210020E492 /* UserDetailsViewViewModel.swift */; };
+		1545FF8A28E9F5130020E492 /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545FF8928E9F5130020E492 /* UserProtocol.swift */; };
+		1545FF8C28E9FED00020E492 /* StudentViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545FF8B28E9FED00020E492 /* StudentViewViewModel.swift */; };
+		1545FF8E28EA11600020E492 /* AddMarkViewViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545FF8D28EA11600020E492 /* AddMarkViewViewModelProtocol.swift */; };
+		1545FF9028EA119E0020E492 /* UserViewViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545FF8F28EA119E0020E492 /* UserViewViewModelProtocol.swift */; };
+		1545FF9228EA11BD0020E492 /* UserDetailsViewViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545FF9128EA11BD0020E492 /* UserDetailsViewViewModelProtocol.swift */; };
 		156D362228DC946800F08EEA /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D362128DC946800F08EEA /* Login.swift */; };
 		157CB1E228C889260051C4DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157CB1E128C889260051C4DF /* AppDelegate.swift */; };
 		157CB1E428C889260051C4DF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157CB1E328C889260051C4DF /* SceneDelegate.swift */; };
 		157CB1E628C889260051C4DF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157CB1E528C889260051C4DF /* LoginViewController.swift */; };
 		157CB1EB28C889280051C4DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 157CB1EA28C889280051C4DF /* Assets.xcassets */; };
-		157CB1EE28C889280051C4DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 157CB1EC28C889280051C4DF /* LaunchScreen.storyboard */; };
 		157CB1F928C8D12F0051C4DF /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157CB1F828C8D12F0051C4DF /* Teacher.swift */; };
 		157CB1FB28C8D6950051C4DF /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157CB1FA28C8D6950051C4DF /* Student.swift */; };
 		157CB1FD28C8D7360051C4DF /* SchoolClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157CB1FC28C8D7360051C4DF /* SchoolClass.swift */; };
@@ -28,20 +36,28 @@
 		157DD4A128CE4E7500B2D814 /* AddMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157DD4A028CE4E7500B2D814 /* AddMarkViewController.swift */; };
 		157DD4A328CF070400B2D814 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157DD4A228CF070400B2D814 /* Subject.swift */; };
 		15B71DA328D0F32000AFA8B5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B71DA228D0F32000AFA8B5 /* NetworkManager.swift */; };
-		15D3DEC228E3034D004594AB /* AddMarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D3DEC128E3034D004594AB /* AddMarkViewModel.swift */; };
+		15D3DEC228E3034D004594AB /* AddMarkViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D3DEC128E3034D004594AB /* AddMarkViewViewModel.swift */; };
 		15E4291128CA0697006753DA /* happy-birthday.json in Resources */ = {isa = PBXBuildFile; fileRef = 15E4291028CA0697006753DA /* happy-birthday.json */; };
 		15F27F00C1B8B25538BA33D9 /* Pods_school_diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469D073677967B8468BF0771 /* Pods_school_diary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1545FF7F28E9BDFB0020E492 /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
+		1545FF8128E9C3180020E492 /* LoginViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewViewModel.swift; sourceTree = "<group>"; };
+		1545FF8328E9E03C0020E492 /* LoginViewViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewViewModelProtocol.swift; sourceTree = "<group>"; };
+		1545FF8528E9E4890020E492 /* TeacherViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherViewViewModel.swift; sourceTree = "<group>"; };
+		1545FF8728E9F4210020E492 /* UserDetailsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewViewModel.swift; sourceTree = "<group>"; };
+		1545FF8928E9F5130020E492 /* UserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProtocol.swift; sourceTree = "<group>"; };
+		1545FF8B28E9FED00020E492 /* StudentViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentViewViewModel.swift; sourceTree = "<group>"; };
+		1545FF8D28EA11600020E492 /* AddMarkViewViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMarkViewViewModelProtocol.swift; sourceTree = "<group>"; };
+		1545FF8F28EA119E0020E492 /* UserViewViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewViewModelProtocol.swift; sourceTree = "<group>"; };
+		1545FF9128EA11BD0020E492 /* UserDetailsViewViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewViewModelProtocol.swift; sourceTree = "<group>"; };
 		156D362128DC946800F08EEA /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		157CB1DE28C889260051C4DF /* school-diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "school-diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		157CB1E128C889260051C4DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		157CB1E328C889260051C4DF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		157CB1E528C889260051C4DF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		157CB1EA28C889280051C4DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		157CB1ED28C889280051C4DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		157CB1EF28C889280051C4DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		157CB1F828C8D12F0051C4DF /* Teacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
 		157CB1FA28C8D6950051C4DF /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
@@ -57,7 +73,7 @@
 		157DD4A028CE4E7500B2D814 /* AddMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMarkViewController.swift; sourceTree = "<group>"; };
 		157DD4A228CF070400B2D814 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
 		15B71DA228D0F32000AFA8B5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		15D3DEC128E3034D004594AB /* AddMarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMarkViewModel.swift; sourceTree = "<group>"; };
+		15D3DEC128E3034D004594AB /* AddMarkViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMarkViewViewModel.swift; sourceTree = "<group>"; };
 		15E4291028CA0697006753DA /* happy-birthday.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "happy-birthday.json"; sourceTree = "<group>"; };
 		469D073677967B8468BF0771 /* Pods_school_diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_school_diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED36B9A8F1229BA014B1AE41 /* Pods-school-diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-school-diary.debug.xcconfig"; path = "Target Support Files/Pods-school-diary/Pods-school-diary.debug.xcconfig"; sourceTree = "<group>"; };
@@ -80,6 +96,11 @@
 			isa = PBXGroup;
 			children = (
 				1545FF7F28E9BDFB0020E492 /* NetworkManagerProtocol.swift */,
+				1545FF8328E9E03C0020E492 /* LoginViewViewModelProtocol.swift */,
+				1545FF8928E9F5130020E492 /* UserProtocol.swift */,
+				1545FF8D28EA11600020E492 /* AddMarkViewViewModelProtocol.swift */,
+				1545FF8F28EA119E0020E492 /* UserViewViewModelProtocol.swift */,
+				1545FF9128EA11BD0020E492 /* UserDetailsViewViewModelProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -136,13 +157,13 @@
 		157CB1F628C88C390051C4DF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				157CB1EC28C889280051C4DF /* LaunchScreen.storyboard */,
 				157CB20728C9C85F0051C4DF /* TeacherViewController.swift */,
 				157DD4A028CE4E7500B2D814 /* AddMarkViewController.swift */,
 				157CB20928C9C8740051C4DF /* StudentViewController.swift */,
 				157CB1E528C889260051C4DF /* LoginViewController.swift */,
 				157DD49E28CE3AB300B2D814 /* MarkTableViewCell.swift */,
 				157DD49C28CE12EC00B2D814 /* UserDetailsView.swift */,
+				1545FF8B28E9FED00020E492 /* StudentViewViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -160,7 +181,10 @@
 		15D3DEC028E30337004594AB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				15D3DEC128E3034D004594AB /* AddMarkViewModel.swift */,
+				15D3DEC128E3034D004594AB /* AddMarkViewViewModel.swift */,
+				1545FF8128E9C3180020E492 /* LoginViewViewModel.swift */,
+				1545FF8528E9E4890020E492 /* TeacherViewViewModel.swift */,
+				1545FF8728E9F4210020E492 /* UserDetailsViewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -251,7 +275,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				15E4291128CA0697006753DA /* happy-birthday.json in Resources */,
-				157CB1EE28C889280051C4DF /* LaunchScreen.storyboard in Resources */,
 				157CB1EB28C889280051C4DF /* Assets.xcassets in Resources */,
 				157CB1FF28C91F560051C4DF /* Podfile in Resources */,
 			);
@@ -307,21 +330,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				157DD49F28CE3AB300B2D814 /* MarkTableViewCell.swift in Sources */,
+				1545FF8428E9E03C0020E492 /* LoginViewViewModelProtocol.swift in Sources */,
 				156D362228DC946800F08EEA /* Login.swift in Sources */,
 				157DD4A328CF070400B2D814 /* Subject.swift in Sources */,
 				157CB20A28C9C8740051C4DF /* StudentViewController.swift in Sources */,
 				157CB1F928C8D12F0051C4DF /* Teacher.swift in Sources */,
 				157DD4A128CE4E7500B2D814 /* AddMarkViewController.swift in Sources */,
+				1545FF9228EA11BD0020E492 /* UserDetailsViewViewModelProtocol.swift in Sources */,
 				157CB1E628C889260051C4DF /* LoginViewController.swift in Sources */,
 				157CB1E228C889260051C4DF /* AppDelegate.swift in Sources */,
 				15B71DA328D0F32000AFA8B5 /* NetworkManager.swift in Sources */,
-				15D3DEC228E3034D004594AB /* AddMarkViewModel.swift in Sources */,
+				15D3DEC228E3034D004594AB /* AddMarkViewViewModel.swift in Sources */,
+				1545FF8C28E9FED00020E492 /* StudentViewViewModel.swift in Sources */,
+				1545FF8828E9F4210020E492 /* UserDetailsViewViewModel.swift in Sources */,
 				157DD49D28CE12ED00B2D814 /* UserDetailsView.swift in Sources */,
+				1545FF8628E9E4890020E492 /* TeacherViewViewModel.swift in Sources */,
+				1545FF8A28E9F5130020E492 /* UserProtocol.swift in Sources */,
+				1545FF8E28EA11600020E492 /* AddMarkViewViewModelProtocol.swift in Sources */,
 				157CB20628C9B9990051C4DF /* functions.swift in Sources */,
 				157CB20428C92DCA0051C4DF /* extensions.swift in Sources */,
 				157CB20828C9C85F0051C4DF /* TeacherViewController.swift in Sources */,
 				157CB1FB28C8D6950051C4DF /* Student.swift in Sources */,
+				1545FF8228E9C3180020E492 /* LoginViewViewModel.swift in Sources */,
 				1545FF8028E9BDFB0020E492 /* NetworkManagerProtocol.swift in Sources */,
+				1545FF9028EA119E0020E492 /* UserViewViewModelProtocol.swift in Sources */,
 				157DD49B28CDF31700B2D814 /* Mark.swift in Sources */,
 				157CB1FD28C8D7360051C4DF /* SchoolClass.swift in Sources */,
 				157CB1E428C889260051C4DF /* SceneDelegate.swift in Sources */,
@@ -329,17 +361,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		157CB1EC28C889280051C4DF /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				157CB1ED28C889280051C4DF /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		157CB1F028C889280051C4DF /* Debug */ = {

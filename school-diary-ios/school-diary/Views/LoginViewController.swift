@@ -1,26 +1,35 @@
 import UIKit
 import SnapKit
-//import Alamofire
-//import CryptoKit
 
 class LoginViewController: UIViewController {
+    
+    private let viewModel: LoginViewViewModelProtocol?
+    
     lazy var loginText = UITextField()
     lazy var passwordText = UITextField()
     lazy var teacherOrStudent = UISegmentedControl(items: ["👩‍🏫 Вчитель", "🙋‍♂️ Учень"])
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        initialize()
+    init(viewModel: LoginViewViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
     }
     
-    func initialize() {
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        prepareUI()
+    }
+    
+    func prepareUI() {
         let image = UIImageView(image: UIImage(named: "login_background"))
         image.contentMode = .scaleToFill
         view.addSubview(image)
         image.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
         
         let loginView = UIView()
         loginView.backgroundColor = .lightGray
@@ -98,34 +107,21 @@ class LoginViewController: UIViewController {
     }
     
     @objc func loginButtonPressed() {
-        var userType: UserType = .teacher
-        if teacherOrStudent.selectedSegmentIndex == 1 {
-            userType = .student
-        }
         if loginText.text == nil || loginText.text == "" || passwordText.text == nil || passwordText.text == "" {
             errorAlert(viewController: self, title: "Помилка",  message: "Введіть дані для входу!")
             return
         }
-        NetworkManager.shared.login(userType: userType.rawValue, userName: loginText.text!, password: passwordText.text!, completed: { [weak self] allowLogin in
-            guard let self else { return }
-            if allowLogin && userType == .teacher {
-                NetworkManager.shared.getData(with: "/" + self.loginText.text!, routeString: .teachers, dataType: Teacher.self) { teachers in
-                    let teacherViewController = TeacherViewController()
-                    teacherViewController.modalPresentationStyle = .fullScreen
-                    teacherViewController.teacher = teachers.first
-                    self.show(teacherViewController, sender: nil)
-                }
-            } else if allowLogin && userType == .student {
-                NetworkManager.shared.getData(with: "/" + self.loginText.text!, routeString: .students, dataType: Student.self) { students in
-                    let studentViewController = StudentViewController()
-                    studentViewController.modalPresentationStyle = .fullScreen
-                    studentViewController.student = students.first
-                    self.show(studentViewController, sender: nil)
-                }
-            } else {
-                errorAlert(viewController: self, title: "Помилка",  message: "Такого користувача не знайдено або неправильний пароль")
+        
+        let login = loginText.text!
+        let password = passwordText.text!
+        
+        viewModel?.login(userTypeInt: teacherOrStudent.selectedSegmentIndex, login: login, password: password, completionBlock: { errorText, nextVC in
+            if errorText != nil {
+                errorAlert(viewController: self, title: "Помилка",  message: errorText!)
                 return
             }
+            guard let nextVC else { return }
+            self.show(nextVC, sender: nil)
         })
     }
 }

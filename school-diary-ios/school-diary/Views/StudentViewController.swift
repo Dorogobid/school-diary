@@ -3,24 +3,33 @@ import Alamofire
 import Lottie
 
 class StudentViewController: UIViewController {
+    private let rowHeight = 85.0
     let tableView = UITableView()
     
-    var student: Student?
+    var viewModel: UserViewViewModelProtocol!
     var marks: Marks = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initialize()
+        setObservers()
+        prepareUI()
+        viewModel.getMarks()
     }
     
-    func initialize() {
+    func setObservers() {
+        _ = viewModel.marks.observeNext { [weak self] marksList in
+            guard let self else { return }
+            self.marks = marksList.collection
+            self.tableView.reloadData()
+        }
+    }
+    
+    func prepareUI() {
         view.backgroundColor = .white
         let topView = UserDetailsView()
-        topView.userType = .student
-        topView.student = student!
-        
-        topView.prepare()
+        topView.viewModel = UserDetailsViewViewModel(user: viewModel.getUser(), userType: .student)
+        topView.prepareUI()
 
         view.addSubview(topView)
         topView.snp.makeConstraints { make in
@@ -43,7 +52,6 @@ class StudentViewController: UIViewController {
         }
         quitButton.addTarget(self, action: #selector(quitButtonPressed), for: .touchUpInside)
         
-//        tableView.backgroundColor = .yellow
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
@@ -53,12 +61,7 @@ class StudentViewController: UIViewController {
             make.bottom.equalToSuperview()
         }
         
-        NetworkManager.shared.getData(with: "/\(student!.id)", routeString: .marksForStudents, dataType: Mark.self) { marks in
-            self.marks = marks
-            self.tableView.reloadData()
-        }
-        
-        if isBirthday(strDate: student!.dateOfBirth) {
+        if viewModel.isBirthdayNow() {
             let animation = AnimationView(name: "happy-birthday")
             animation.frame = view.bounds
             animation.contentMode = .scaleAspectFit
@@ -71,6 +74,7 @@ class StudentViewController: UIViewController {
         }
 
     }
+    
     @objc func quitButtonPressed() {
         dismiss(animated: true)
     }
@@ -89,10 +93,8 @@ extension StudentViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        85
+        rowHeight
     }
 }
 
-extension StudentViewController: UITableViewDelegate {
-    
-}
+extension StudentViewController: UITableViewDelegate {}

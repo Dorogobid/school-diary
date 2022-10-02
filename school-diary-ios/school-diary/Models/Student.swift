@@ -1,6 +1,5 @@
 
-// MARK: - Student
-struct Student: Codable {
+struct Student: Codable, UserProtocol {
     let id: String
     let schoolClassId: String
     let password, photo: String

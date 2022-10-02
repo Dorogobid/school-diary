@@ -1,5 +1,4 @@
 
-// MARK: - Subject
 struct Subject: Codable {
     let id: String
     let subjectName: String
