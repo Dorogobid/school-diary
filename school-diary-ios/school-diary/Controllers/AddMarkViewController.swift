@@ -15,6 +15,7 @@ class AddMarkViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         initialize()
     }

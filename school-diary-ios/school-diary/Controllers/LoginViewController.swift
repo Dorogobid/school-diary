@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
-import Alamofire
-import CryptoKit
+//import Alamofire
+//import CryptoKit
 
 class LoginViewController: UIViewController {
     lazy var loginText = UITextField()
@@ -106,7 +106,8 @@ class LoginViewController: UIViewController {
             errorAlert(viewController: self, title: "Помилка",  message: "Введіть дані для входу!")
             return
         }
-        NetwordManager.shared.login(userType: userType.rawValue, userName: loginText.text!, password: passwordText.text!, completed: { allowLogin in
+        NetwordManager.shared.login(userType: userType.rawValue, userName: loginText.text!, password: passwordText.text!, completed: { [weak self] allowLogin in
+            guard let self else { return }
             if allowLogin && userType == .teacher {
                 NetwordManager.shared.getData(with: "/" + self.loginText.text!, routeString: .teachers, dataType: Teacher.self) { teachers in
                     let teacherViewController = TeacherViewController()
