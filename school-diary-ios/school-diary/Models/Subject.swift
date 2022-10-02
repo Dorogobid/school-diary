@@ -1,4 +1,3 @@
-import Foundation
 
 // MARK: - Subject
 struct Subject: Codable {

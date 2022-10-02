@@ -106,17 +106,17 @@ class LoginViewController: UIViewController {
             errorAlert(viewController: self, title: "Помилка",  message: "Введіть дані для входу!")
             return
         }
-        NetwordManager.shared.login(userType: userType.rawValue, userName: loginText.text!, password: passwordText.text!, completed: { [weak self] allowLogin in
+        NetworkManager.shared.login(userType: userType.rawValue, userName: loginText.text!, password: passwordText.text!, completed: { [weak self] allowLogin in
             guard let self else { return }
             if allowLogin && userType == .teacher {
-                NetwordManager.shared.getData(with: "/" + self.loginText.text!, routeString: .teachers, dataType: Teacher.self) { teachers in
+                NetworkManager.shared.getData(with: "/" + self.loginText.text!, routeString: .teachers, dataType: Teacher.self) { teachers in
                     let teacherViewController = TeacherViewController()
                     teacherViewController.modalPresentationStyle = .fullScreen
                     teacherViewController.teacher = teachers.first
                     self.show(teacherViewController, sender: nil)
                 }
             } else if allowLogin && userType == .student {
-                NetwordManager.shared.getData(with: "/" + self.loginText.text!, routeString: .students, dataType: Student.self) { students in
+                NetworkManager.shared.getData(with: "/" + self.loginText.text!, routeString: .students, dataType: Student.self) { students in
                     let studentViewController = StudentViewController()
                     studentViewController.modalPresentationStyle = .fullScreen
                     studentViewController.student = students.first

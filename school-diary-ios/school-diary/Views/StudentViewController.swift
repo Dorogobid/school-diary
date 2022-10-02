@@ -53,7 +53,7 @@ class StudentViewController: UIViewController {
             make.bottom.equalToSuperview()
         }
         
-        NetwordManager.shared.getData(with: "/\(student!.id)", routeString: .marksForStudents, dataType: Mark.self) { marks in
+        NetworkManager.shared.getData(with: "/\(student!.id)", routeString: .marksForStudents, dataType: Mark.self) { marks in
             self.marks = marks
             self.tableView.reloadData()
         }

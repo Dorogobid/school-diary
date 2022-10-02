@@ -62,7 +62,7 @@ class AddMarkViewController: UIViewController {
         subjectPicker.tag = 0
         topView.addSubview(subjectPicker)
         
-        NetwordManager.shared.getData(with: "", routeString: .subjects, dataType: Subject.self) { subjects in
+        NetworkManager.shared.getData(with: "", routeString: .subjects, dataType: Subject.self) { subjects in
             self.subjects = subjects
             self.subjectPicker.reloadAllComponents()
         }
@@ -86,7 +86,7 @@ class AddMarkViewController: UIViewController {
         studentPicker.tag = 1
         topView.addSubview(studentPicker)
         
-        NetwordManager.shared.getData(with: "", routeString: .students, dataType: Student.self) { students in
+        NetworkManager.shared.getData(with: "", routeString: .students, dataType: Student.self) { students in
             self.students = students
             self.studentPicker.reloadAllComponents()
         }
@@ -159,7 +159,7 @@ class AddMarkViewController: UIViewController {
                                markDate: dateToString(date: datePicker.date),
                                teacherId: teacher!.id)
         
-        NetwordManager.shared.addMark(mark: mark, routeString: .marks)
+        NetworkManager.shared.addMark(mark: mark, routeString: .marks)
         dismiss(animated: true)
     }
 }

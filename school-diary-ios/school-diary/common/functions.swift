@@ -1,6 +1,5 @@
 import Foundation
 import UIKit
-import Alamofire
 
 func hashStr(_ str: String) -> String {
     str.data(using: .utf8)!.md5
@@ -51,16 +50,3 @@ func StringToDate(str: String) -> Date {
     }
     return result
 }
-
-//func getImageFromServer(imgName: String) -> UIImage {
-//    var image = UIImage()
-//    AF.request("http://127.0.0.1:8080/img/\(imgName)").response { response in
-//                    let data = response.data
-//                    image = UIImage(data: data!)!
-//        print(image)
-//
-//
-//       }
-//    print(image)
-//    return image
-//}

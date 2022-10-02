@@ -1,4 +1,3 @@
-import Foundation
 
 struct LoginData: Codable {
     var userType: String?

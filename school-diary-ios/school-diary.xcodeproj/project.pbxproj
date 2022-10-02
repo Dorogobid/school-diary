@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1545FF8028E9BDFB0020E492 /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545FF7F28E9BDFB0020E492 /* NetworkManagerProtocol.swift */; };
 		156D362228DC946800F08EEA /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D362128DC946800F08EEA /* Login.swift */; };
 		157CB1E228C889260051C4DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157CB1E128C889260051C4DF /* AppDelegate.swift */; };
 		157CB1E428C889260051C4DF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157CB1E328C889260051C4DF /* SceneDelegate.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1545FF7F28E9BDFB0020E492 /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
 		156D362128DC946800F08EEA /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		157CB1DE28C889260051C4DF /* school-diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "school-diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		157CB1E128C889260051C4DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,7 +46,7 @@
 		157CB1F828C8D12F0051C4DF /* Teacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
 		157CB1FA28C8D6950051C4DF /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		157CB1FC28C8D7360051C4DF /* SchoolClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolClass.swift; sourceTree = "<group>"; };
-		157CB1FE28C91F560051C4DF /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		157CB1FE28C91F560051C4DF /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Podfile; path = "school-diary/Podfile"; sourceTree = SOURCE_ROOT; };
 		157CB20328C92DCA0051C4DF /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		157CB20528C9B9990051C4DF /* functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = functions.swift; sourceTree = "<group>"; };
 		157CB20728C9C85F0051C4DF /* TeacherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1545FF7E28E9B5990020E492 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1545FF7F28E9BDFB0020E492 /* NetworkManagerProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		157CB1D528C889260051C4DF = {
 			isa = PBXGroup;
 			children = (
@@ -95,17 +105,17 @@
 		157CB1E028C889260051C4DF /* school-diary */ = {
 			isa = PBXGroup;
 			children = (
-				15D3DEC028E30337004594AB /* ViewModels */,
-				15E4291228CA069D006753DA /* animations */,
-				157CB1FE28C91F560051C4DF /* Podfile */,
-				157CB20028C926D80051C4DF /* custom */,
+				1545FF7E28E9B5990020E492 /* Protocols */,
+				157CB20028C926D80051C4DF /* common */,
 				157CB1F528C88C310051C4DF /* Models */,
 				157CB1F628C88C390051C4DF /* Views */,
-				157CB1F728C88C450051C4DF /* Controllers */,
+				15D3DEC028E30337004594AB /* ViewModels */,
 				157CB1E328C889260051C4DF /* SceneDelegate.swift */,
 				157CB1E128C889260051C4DF /* AppDelegate.swift */,
 				157CB1EA28C889280051C4DF /* Assets.xcassets */,
+				15E4291228CA069D006753DA /* animations */,
 				157CB1EF28C889280051C4DF /* Info.plist */,
+				157CB1FE28C91F560051C4DF /* Podfile */,
 			);
 			path = "school-diary";
 			sourceTree = "<group>";
@@ -127,31 +137,24 @@
 			isa = PBXGroup;
 			children = (
 				157CB1EC28C889280051C4DF /* LaunchScreen.storyboard */,
+				157CB20728C9C85F0051C4DF /* TeacherViewController.swift */,
+				157DD4A028CE4E7500B2D814 /* AddMarkViewController.swift */,
+				157CB20928C9C8740051C4DF /* StudentViewController.swift */,
+				157CB1E528C889260051C4DF /* LoginViewController.swift */,
 				157DD49E28CE3AB300B2D814 /* MarkTableViewCell.swift */,
 				157DD49C28CE12EC00B2D814 /* UserDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		157CB1F728C88C450051C4DF /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				157CB20728C9C85F0051C4DF /* TeacherViewController.swift */,
-				157CB1E528C889260051C4DF /* LoginViewController.swift */,
-				157CB20928C9C8740051C4DF /* StudentViewController.swift */,
-				157DD4A028CE4E7500B2D814 /* AddMarkViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		157CB20028C926D80051C4DF /* custom */ = {
+		157CB20028C926D80051C4DF /* common */ = {
 			isa = PBXGroup;
 			children = (
 				157CB20328C92DCA0051C4DF /* extensions.swift */,
 				157CB20528C9B9990051C4DF /* functions.swift */,
 				15B71DA228D0F32000AFA8B5 /* NetworkManager.swift */,
 			);
-			path = custom;
+			path = common;
 			sourceTree = "<group>";
 		};
 		15D3DEC028E30337004594AB /* ViewModels */ = {
@@ -318,6 +321,7 @@
 				157CB20428C92DCA0051C4DF /* extensions.swift in Sources */,
 				157CB20828C9C85F0051C4DF /* TeacherViewController.swift in Sources */,
 				157CB1FB28C8D6950051C4DF /* Student.swift in Sources */,
+				1545FF8028E9BDFB0020E492 /* NetworkManagerProtocol.swift in Sources */,
 				157DD49B28CDF31700B2D814 /* Mark.swift in Sources */,
 				157CB1FD28C8D7360051C4DF /* SchoolClass.swift in Sources */,
 				157CB1E428C889260051C4DF /* SceneDelegate.swift in Sources */,

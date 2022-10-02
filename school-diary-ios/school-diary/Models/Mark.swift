@@ -1,4 +1,3 @@
-import Foundation
 
 // MARK: - Mark
 struct Mark: Codable {
@@ -23,18 +22,4 @@ struct MarkRequest: Codable {
 
 typealias Marks = [Mark]
 
-//// MARK: - SubjectId
-//struct SubjectId: Codable {
-//    let id: String
-//}
-//
-//// MARK: - StudentId
-//struct StudentId: Codable {
-//    let id: String
-//}
-//
-//// MARK: - TeacherId
-//struct TeacherId: Codable {
-//    let id: String
-//}
 

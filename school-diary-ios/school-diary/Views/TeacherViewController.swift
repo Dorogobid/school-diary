@@ -22,7 +22,7 @@ class TeacherViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        NetwordManager.shared.getData(with: "/\(teacher!.id)", routeString: .marksForTeachers, dataType: Mark.self) { marks in
+        NetworkManager.shared.getData(with: "/\(teacher!.id)", routeString: .marksForTeachers, dataType: Mark.self) { marks in
             self.marks = marks
             self.tableView.reloadData()
         }
@@ -118,7 +118,7 @@ extension TeacherViewController: UITableViewDataSource {
 extension TeacherViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title: "Delete") { _, _, completion in
-            NetwordManager.shared.delMark(mark: self.marks[indexPath.row], routeString: .marks)
+            NetworkManager.shared.delMark(mark: self.marks[indexPath.row], routeString: .marks)
             self.marks.remove(at: indexPath.row)
             self.tableView.reloadData()
             completion(true)
@@ -126,5 +126,4 @@ extension TeacherViewController: UITableViewDelegate {
         deleteAction.backgroundColor = .red
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
-    
 }

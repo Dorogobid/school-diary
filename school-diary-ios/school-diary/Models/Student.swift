@@ -1,4 +1,3 @@
-import Foundation
 
 // MARK: - Student
 struct Student: Codable {

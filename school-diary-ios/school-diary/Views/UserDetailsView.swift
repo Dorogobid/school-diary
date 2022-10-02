@@ -61,7 +61,7 @@ class UserDetailsView: UIView {
             nameLabel.text = student?.name
             birthLabel.text = "Дата народження: \(student!.dateOfBirth)"
             
-            NetwordManager.shared.getData(with: "/\(student!.schoolClassId)", routeString: .schoolClasses, dataType: SchoolClass.self) { schoolClasses in
+            NetworkManager.shared.getData(with: "/\(student!.schoolClassId)", routeString: .schoolClasses, dataType: SchoolClass.self) { schoolClasses in
                 classLabel.text = "Учень відвідує \(schoolClasses.first!.className) клас"
             }
             
@@ -69,7 +69,7 @@ class UserDetailsView: UIView {
                 make.left.equalToSuperview().inset(10)
                 make.top.equalTo(classLabel).inset(24)
             }
-            NetwordManager.shared.getImage(imageName: "/" + student!.photo, routeString: .images) { image in
+            NetworkManager.shared.getImage(imageName: "/" + student!.photo, routeString: .images) { image in
                 photo.image = image
             }
         } else {
@@ -82,7 +82,7 @@ class UserDetailsView: UIView {
                 make.top.equalTo(birthLabel).inset(24)
             }
             
-            NetwordManager.shared.getImage(imageName: "/" + teacher!.photo, routeString: .images) { image in
+            NetworkManager.shared.getImage(imageName: "/" + teacher!.photo, routeString: .images) { image in
                 photo.image = image
             }
         }

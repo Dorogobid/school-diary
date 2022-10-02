@@ -13,9 +13,13 @@ enum RouteString: String {
     case login = "/api/login"
 }
 
+typealias NetworkManager = NetworkManagerV1
 
-final class NetwordManager {
-    static let shared = NetwordManager()
+final class NetworkManagerV1 : NetworkManagerProtocol{
+    static var shared: NetworkManagerProtocol {
+        NetworkManagerV1()
+    }
+    
     
     private let baseURL = "http://127.0.0.1:8080"
     private let bearerToken = "eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCJ98Ng09a8"
@@ -31,7 +35,7 @@ final class NetwordManager {
                 let data = try response.result.get()
                 completed(data)
             } catch {
-                print("Нема зв'язку з сервером")
+                print("Неможливо отримати дані")
             }
         }
     }

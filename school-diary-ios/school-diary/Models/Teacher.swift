@@ -1,4 +1,3 @@
-import Foundation
 
 struct Teacher: Codable {
     let id: String
